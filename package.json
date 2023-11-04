@@ -1,0 +1,36 @@
+{
+  "name": "gestion-tortas",
+  "version": "1.0.0",
+  "description": "Sistema encargado de llevar a cabo una gestion de una tienda de tortas con vendedores",
+  "main": "src/app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enmarcm/TiendaTortas.git"
+  },
+  "keywords": [
+    "session",
+    "component",
+    "apirest",
+    "rest"
+  ],
+  "author": "Enmanuel Colina",
+  "license": "ISC",
+  "homepage": "https://github.com/enmarcm/TiendaTortas#readme",
+  "dependencies": {
+    "bcrypt": "5.1.1",
+    "cors": "2.8.5",
+    "express": "4.18.2",
+    "express-session": "1.17.3",
+    "nodemailer": "^6.9.6",
+    "pg-pool": "^3.6.0",
+    "zod": "3.22.4"
+  },
+  "devDependencies": {
+    "nodemon": "3.0.1",
+    "picocolors": "1.0.0"
+  }
+}

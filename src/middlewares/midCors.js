@@ -1,3 +1,4 @@
+import cors from "cors"
 /**
  * Middleware para permitir el acceso a recursos de diferentes orígenes.
  * @param {Object} req - El objeto de solicitud HTTP.
@@ -9,7 +10,8 @@ const midCors = (req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization'); 
-    next();
+  cors({credentials: true, origin: true})(req, res, next)
+    // next(); <<-- Aqui no hace falta el next, ya cors la llama
 }
 
 export default midCors;

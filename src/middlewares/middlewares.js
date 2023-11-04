@@ -3,7 +3,7 @@ import midNotFound from "./midNotFound.js";
 import midAuthLogin from "./midAuthLogin.js";
 import midNotProfile from "./midNotProfile.js";
 import midJson from "./midJson.js";
-import cors from "cors";
+// import cors from "cors";
 
 /**
  * Middleware para permitir el acceso a recursos de diferentes orígenes.
@@ -33,7 +33,7 @@ export { midNotProfile };
  * Middleware para permitir el acceso a recursos de diferentes orígenes.
  * @type {Function}
  */
-export { cors };
+// export { cors };
 
 /**
  * Middleware para verificar el schema de los JSON en el body.

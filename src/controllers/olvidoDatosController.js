@@ -1,5 +1,5 @@
-import iSession from "../data/session-data/iSession.js";
-import iMailer from "../data/mailer-data/iMailer.js";
+import iSession from "../data/instances/iSession.js";
+import iMailer from "../data/instances/iMailer.js";
 import UserModel from "../models/userModel.js";
 import CryptManager from "../components/CryptManager.js";
 import { verifyAnswerQuestion } from "../schemas/userSchema.js";

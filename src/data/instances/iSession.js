@@ -2,7 +2,7 @@ import Session from "../../components/Session.js";
 import importJSON from "../../utils/importJson.js";
 
 const configSession = importJSON({
-  path: "../data/session-data/config-session.json",
+  path: "../data/json/config-session.json",
 });
 
 /**

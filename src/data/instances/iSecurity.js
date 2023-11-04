@@ -3,7 +3,7 @@ import PermissionController from "../../controllers/permissionController.js";
 import Security from "../../components/Security.js";
 
 const configSecurity = importJSON({
-  path: "../data/security-data/config-security.json",
+  path: "../data/json/config-security.json",
 });
 
 /**

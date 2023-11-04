@@ -1,5 +1,5 @@
 import UserModel from "../models/userModel.js";
-import iSession from "../data/session-data/iSession.js";
+import iSession from "../data/instances/iSession.js";
 
 /**
  * Controlador para el inicio de sesión de usuarios.

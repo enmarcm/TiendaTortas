@@ -1,4 +1,4 @@
-import iSession from "../data/session-data/iSession.js";
+import iSession from "../data/instances/iSession.js";
 import UserModel from "../models/userModel.js";
 import { verifyUpdateUser } from "../schemas/userSchema.js";
 

@@ -1,4 +1,4 @@
-import iSecurity from "../data/security-data/iSecurity.js";
+import iSecurity from "../data/instances/iSecurity.js";
 
 /**
  * Clase que representa un controlador para ejecutar métodos de diferentes áreas y objetos.

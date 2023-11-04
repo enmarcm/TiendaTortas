@@ -1,4 +1,4 @@
-import iSession from "../data/session-data/iSession.js";
+import iSession from "../data/instances/iSession.js";
 
 /**
  * Clase que representa un controlador para cerrar sesión.

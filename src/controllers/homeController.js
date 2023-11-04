@@ -1,5 +1,5 @@
-import iSecurity from "../data/security-data/iSecurity.js";
-import iSession from "../data/session-data/iSession.js";
+import iSecurity from "../data/instances/iSecurity.js";
+import iSession from "../data/instances/iSession.js";
 
 /**
  * Clase que representa un controlador para la página de inicio.

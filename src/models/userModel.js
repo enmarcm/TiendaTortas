@@ -2,7 +2,7 @@
  * @file Modelo de usuarios de la aplicación.
  * @name UserModel.js
  */
-import iPgHandler from "../data/pg-handler-data/iPgHandler.js";
+import iPgHandler from "../data/instances/iPgHandler.js";
 import CryptManager from "../components/CryptManager.js";
 
 /**

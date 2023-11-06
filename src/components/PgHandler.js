@@ -42,7 +42,7 @@ class PgHandler {
       const { rows } = await this.pool.query(query, params);
       return rows;
     } catch (error) {
-      return {error};
+      return { error };
     }
   };
 
@@ -55,7 +55,7 @@ class PgHandler {
     try {
       return await this.pool.connect();
     } catch (error) {
-      return {error};
+      return { error };
     }
   };
 
@@ -68,7 +68,7 @@ class PgHandler {
     try {
       await this.pool.release();
     } catch (error) {
-      return {error};
+      return { error };
     }
   };
 
@@ -76,22 +76,43 @@ class PgHandler {
    * Ejecuta una transacción de base de datos utilizando una serie de consultas.
    * @async
    * @param {Object} options - Objeto con las opciones para la transacción.
-   * @param {Array<String>} options.query - Un array de objetos que contienen la clave de la consulta y los parámetros de la consulta.
+   * @param {Array<Object>} options.querys - Un array de objetos que contienen la clave de la consulta y los parámetros de la consulta.
+   * @param {String} options.querys.key - Clave de la consulta predefinida a ejecutar.
+   * @param {Array} [options.querys.params=[]] - Parámetros para la consulta.
+   * @param {Boolean} [options.querys.insertResult=false] - Indica si la consulta es un insert y se debe almacenar el resultado para usarlo en la siguiente consulta.
    * @returns {Promise<Object>} - Una promesa que se resuelve con el resultado de la transacción o se rechaza con un error.
+   * @example
+   * const querys = [
+   * {key: "insert1", params: [12313,12313], insertResult: true}
+   * {key: "insert2", params: [12313,12313], insertResult: false},
+   * {key: "insert3", params: [12313,12313}
+   * ];
+   * const result = await transaction({querys});
    */
-  transaction = async ({querys = []}) => { 
+  transaction = async ({ querys = [] }) => {
     const client = await this.connect();
+    let resultAlmacenado;
     try {
       await client.query("BEGIN");
       for (const elemento of querys) {
-        const { key, params } = elemento;
-        await client.query(this.querys[key], params);
+        const { key, params, insertResult } = elemento;
+        const finalParams = resultAlmacenado
+          ? [...params, resultAlmacenado]
+          : params;
+        const result = await client.query(this.querys[key], finalParams);
+        if (insertResult) {
+          const rows = result.rows.length === 1 ? result.rows[0] : result.rows;
+          resultAlmacenado =
+            typeof rows === "object" && Object.keys(rows).length === 1
+              ? Object.values(rows)[0]
+              : rows;
+        }
       }
       const result = await client.query("COMMIT");
       return result;
     } catch (error) {
       await client.query("ROLLBACK");
-      return {error};
+      return { error };
     } finally {
       await client.release();
     }
